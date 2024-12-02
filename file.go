@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// LinesFromFile reads lines from a file and returns them as a slice of strings
 func LinesFromFile(file *os.File) []string {
 	var lines []string
 
