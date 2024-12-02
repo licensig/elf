@@ -36,7 +36,7 @@ func (e *Elf) GetInputFile(year int, day int) *os.File {
 
 		// Prepare request
 		url := fmt.Sprintf("https://adventofcode.com/%d/day/%d/input", year, day)
-		request, err := http.NewRequest("GET", url, nil)
+		request, err := http.NewRequest(http.MethodGet, url, nil)
 		if err != nil {
 			panic(err)
 		}
