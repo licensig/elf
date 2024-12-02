@@ -3,7 +3,7 @@ package elf_test
 import (
 	"testing"
 
-	"github.com/licensig/elf"
+	"github.com/tahirmurata/elf"
 )
 
 func TestGetInputFile(t *testing.T) {
