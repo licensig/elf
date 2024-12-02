@@ -5,14 +5,12 @@ import (
 	"strings"
 )
 
-// StringAtoiArray splits a string to an array of int
-func StringAtoiArray(str string, sep string) []int {
-	// Create an array of string str by splitting it with sep
+// StringToInts converts a string of numbers separated by a delimiter into a slice of integers.
+// Panics if any substring cannot be parsed as a valid integer.
+func StringToInts(str string, sep string) []int {
 	strArr := strings.Split(str, sep)
-	// Create an array of int with same length as strArr
 	intArr := make([]int, len(strArr))
 
-	// Convert each element of strArr to int and store it in intArr
 	for i, s := range strArr {
 		j, err := strconv.Atoi(s)
 		if err != nil {

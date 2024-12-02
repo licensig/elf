@@ -18,7 +18,8 @@ func New(token string) *Elf {
 	return &Elf{token: token}
 }
 
-// GetInputFile gets the input file for the given year and day
+// GetInputFile retrieves and opens the input file for the specified year and day.
+// If the input file doesn't exist locally, it downloads it from adventofcode.com.
 func (e *Elf) GetInputFile(year int, day int) *os.File {
 	filename := fmt.Sprintf("%d-%d.txt", year, day)
 	file, err := os.Open(filename)
