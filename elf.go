@@ -28,11 +28,11 @@ func (e *Elf) GetInputFile(year int, day int) *os.File {
 		// handle the case where the file doesn't exist
 
 		// Create file
-		file_created, err := os.Create(filename)
+		fileCreated, err := os.Create(filename)
 		if err != nil {
 			panic(err)
 		}
-		defer file_created.Close()
+		defer fileCreated.Close()
 
 		// Prepare request
 		url := fmt.Sprintf("https://adventofcode.com/%d/day/%d/input", year, day)
@@ -50,7 +50,7 @@ func (e *Elf) GetInputFile(year int, day int) *os.File {
 		defer resp.Body.Close()
 
 		// Write response to file
-		_, err = io.Copy(file_created, resp.Body)
+		_, err = io.Copy(fileCreated, resp.Body)
 		if err != nil {
 			panic(err)
 		}
