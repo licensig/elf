@@ -1,3 +1,3 @@
-module github.com/tahirmurata/aoc
+module github.com/tahirmurata/sleigh
 
 go 1.23.3
