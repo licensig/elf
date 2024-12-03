@@ -1,2 +1,2 @@
-// Package reindeer is a cli for scaffolding templates for solving the Advent of Code problems
+// Package reindeer is a cli tool for scaffolding templates for Advent of Code.
 package reindeer

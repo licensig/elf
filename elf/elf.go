@@ -1,4 +1,4 @@
-// Package elf implements helper functions for solving the Advent of Code problems
+// Package elf implements helper functions for the Advent of Code.
 package elf
 
 type Elf struct {
