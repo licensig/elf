@@ -1,7 +1,7 @@
-// Package elf provides helpers for solving the Advent of Code
 package elf
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
 	"io"
@@ -9,20 +9,14 @@ import (
 	"os"
 )
 
-type Elf struct {
-	token string
-}
-
-// New creates a new Elf with the given token
-func New(token string) *Elf {
-	return &Elf{token: token}
-}
-
 // GetInputFile retrieves and opens the input file for the specified year and day.
 // If the input file doesn't exist locally, it downloads it from adventofcode.com.
 func (e *Elf) GetInputFile(year int, day int) *os.File {
 	filename := fmt.Sprintf("%d_%d.txt", year, day)
 	file, err := os.Open(filename)
+	if err == nil {
+		return file
+	}
 
 	if errors.Is(err, os.ErrNotExist) {
 		// handle the case where the file doesn't exist
@@ -40,7 +34,7 @@ func (e *Elf) GetInputFile(year int, day int) *os.File {
 		if err != nil {
 			panic(err)
 		}
-		request.AddCookie(&http.Cookie{Name: "session", Value: e.token})
+		request.AddCookie(&http.Cookie{Name: "session", Value: e.Token})
 
 		// Send request
 		resp, err := http.DefaultClient.Do(request)
@@ -60,9 +54,25 @@ func (e *Elf) GetInputFile(year int, day int) *os.File {
 		if err != nil {
 			panic(err)
 		}
-	} else if err != nil {
-		panic(err)
+
+		return file
 	}
 
-	return file
+	panic(err)
+}
+
+// LinesFromFile reads lines from a file and returns them as a slice of strings.
+// Panics if any error occurs during scanning.
+func LinesFromFile(file *os.File) []string {
+	var lines []string
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+	if scanner.Err() != nil {
+		panic(scanner.Err())
+	}
+
+	return lines
 }

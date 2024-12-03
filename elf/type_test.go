@@ -5,7 +5,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/tahirmurata/elf"
+	"github.com/tahirmurata/aoc/elf"
 )
 
 func TestStringToInts(t *testing.T) {
