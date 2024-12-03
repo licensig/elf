@@ -34,7 +34,7 @@ func (e *Elf) GetInputFile(year int, day int) *os.File {
 		if err != nil {
 			panic(err)
 		}
-		request.AddCookie(&http.Cookie{Name: "session", Value: e.Token})
+		request.AddCookie(&http.Cookie{Name: "session", Value: e.token})
 
 		// Send request
 		resp, err := http.DefaultClient.Do(request)

@@ -2,10 +2,10 @@
 package elf
 
 type Elf struct {
-	Token string
+	token string
 }
 
 // New creates a new Elf with the given token
 func New(token string) *Elf {
-	return &Elf{Token: token}
+	return &Elf{token: token}
 }
