@@ -19,8 +19,11 @@ func TestStringToInts(t *testing.T) {
 	for _, tt := range tests {
 		testname := fmt.Sprintf("%s,%s", tt.str, tt.sep)
 		t.Run(testname, func(t *testing.T) {
-			ans := elf.StringToInts(tt.str, tt.sep)
+			ans, err := elf.StringToInts(tt.str, tt.sep)
 			// if ans != tt.want {
+			if err != nil {
+				t.Error(err)
+			}
 			if slices.Compare(ans, tt.want) != 0 {
 				t.Errorf("got %d, want %d", ans, tt.want)
 			}
