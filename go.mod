@@ -1,3 +1,3 @@
-module github.com/tahirmurata/sleigh/v2
+module github.com/tahirmurata/santa
 
 go 1.23.3
