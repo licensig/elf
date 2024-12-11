@@ -12,7 +12,7 @@ import (
 // GetInputFile retrieves and opens the input file for the specified year and day.
 // If the input file doesn't exist locally, it downloads it from adventofcode.com.
 func (e *Elf) GetInputFile(year int, day int) (*os.File, error) {
-	filename := fmt.Sprintf("input.txt", year, day)
+	filename := fmt.Sprintf("input.txt")
 	file, err := os.Open(filename)
 	if err == nil {
 		return file, nil
